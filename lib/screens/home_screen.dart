@@ -27,11 +27,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Expense Tracker'),
+        actions: [
+          IconButton(
+            onPressed: () => {},
+            icon: const Icon(Icons.add),
+          )
+        ],
+      ),
       body: Column(
         children: [
-          const Text('app bar'),
           const Text('expense chart'),
-          const Text('expense list'),
           Expanded(
             child: ExpenseListView(expenses: expenses),
           ),
