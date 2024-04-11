@@ -34,7 +34,7 @@ class _ExpenseInputState extends State<ExpenseInputView> {
 
   void onSaveButtonPressed() {
     final amount = double.tryParse(_amountController.text);
-    final isInValidAmount = (amount == null || amount! <= 0.0);
+    final isInValidAmount = (amount == null || amount <= 0.0);
 
     if (_titleController.text.trim().isEmpty ||
         isInValidAmount ||
