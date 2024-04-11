@@ -1,3 +1,4 @@
+import 'package:expense_tracker/custom_widget/chart.dart';
 import 'package:expense_tracker/custom_widget/expense_input.dart';
 import 'package:expense_tracker/custom_widget/expense_list_view.dart';
 import 'package:expense_tracker/models/expense_model.dart';
@@ -15,15 +16,25 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final List<ExpenseModel> expenses = [
     ExpenseModel(
-        title: 'my first dummy expense',
+        title: 'my first food expense',
         amount: 20.0,
         dateCreated: DateTime.now(),
         expenseType: ExpenseType.food),
     ExpenseModel(
-        title: 'my second expense',
-        amount: 25.033,
+        title: 'my first work expense',
+        amount: 50.0,
         dateCreated: DateTime.now(),
-        expenseType: ExpenseType.food),
+        expenseType: ExpenseType.work),
+    ExpenseModel(
+        title: 'my first travel expense',
+        amount: 25.0,
+        dateCreated: DateTime.now(),
+        expenseType: ExpenseType.travel),
+    ExpenseModel(
+        title: 'my first lieasure expense',
+        amount: 5.0,
+        dateCreated: DateTime.now(),
+        expenseType: ExpenseType.leisure)
   ];
   void openAddExpenseOverlay() {
     showModalBottomSheet(
@@ -87,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-          const Text('expense chart'),
+          Chart(expenses: expenses),
           Expanded(
             child: dataContent,
           ),
