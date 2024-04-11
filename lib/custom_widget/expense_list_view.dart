@@ -17,7 +17,12 @@ class ExpenseListView extends StatelessWidget {
         },
         key: ValueKey(expenses[index].id),
         background: Container(
-          color: Colors.red,
+          color: Theme.of(context)
+              .colorScheme
+              .error
+              .withOpacity(0.75)
+              .withAlpha(50),
+          margin: Theme.of(context).cardTheme.margin,
         ),
         child: ExpenseListItemView(expense: expenses[index]),
       ),
