@@ -39,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void openAddExpenseOverlay() {
     showModalBottomSheet(
       isScrollControlled: true,
+      useSafeArea: true,
       context: context,
       builder: (sheetContext) => ExpenseInputView(
         onAddExpense: onAddExpense,
@@ -76,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     Widget dataContent = const Center(
       child: Text('No Expense Present'),
     );
@@ -96,14 +98,23 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Chart(expenses: expenses),
-          Expanded(
-            child: dataContent,
-          ),
-        ],
-      ),
+      body: width > 500
+          ? Row(
+              children: [
+                Expanded(
+                  child: Chart(expenses: expenses),
+                ),
+                Expanded(child: dataContent),
+              ],
+            )
+          : Column(
+              children: [
+                Chart(expenses: expenses),
+                Expanded(
+                  child: dataContent,
+                ),
+              ],
+            ),
     );
   }
 }
